@@ -1,0 +1,412 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Microsoft YaHei', Arial, sans-serif;
+    background-color: #f5f5f5;
+    padding: 10px;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+.container {
+    width: 100%;
+    height: calc(100vh - 20px);
+    margin: 0 auto;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.two-column-layout {
+    display: flex;
+    gap: 20px;
+    align-items: stretch;
+    flex: 1;
+    overflow: hidden;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+h2 {
+    color: #555;
+    margin-bottom: 15px;
+    font-size: 20px;
+    padding-bottom: 3px;
+}
+
+.form-section {
+    flex: 0 0 35%;
+    overflow-y: auto;
+    padding-right: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-section-block {
+    background-color: #f9f9f9;
+    border-radius: 6px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.form-section-block h3 {
+    color: #007bff;
+    margin-bottom: 12px;
+    padding-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    font-size: 16px;
+}
+
+.form-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 12px;
+}
+
+.form-row .form-group {
+    flex: 1;
+    margin-bottom: 3px;
+}
+
+.preview-section {
+    flex: 0 0 65%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.form-groupform {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-buttons {
+    padding: 20px 0;
+    text-align: center;
+    background: white;
+    border-top: 1px solid #eee;
+    margin-top: auto;
+}
+
+label {
+    display: block;
+    margin-bottom: 3px;
+    font-weight: bold;
+    color: #555;
+    font-size: 14px;
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 5px 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    font-family: 'Microsoft YaHei', Arial, sans-serif;
+    background-color: white;
+    height: 32px;
+    line-height: 20px;
+}
+
+input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 2px rgba(0,123,255,0.2);
+}
+
+input::placeholder, textarea::placeholder {
+    color: #999;
+    font-size: 12px;
+}
+
+.form-group {
+    margin-bottom: 12px;
+}
+
+select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23555' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    background-size: 14px;
+    padding-right: 30px;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 80px;
+    height: auto;
+}
+
+.btn {
+    padding: 8px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-right: 8px;
+    transition: background-color 0.3s;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-success {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn-success:hover {
+    background-color: #1e7e34;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #545b62;
+}
+
+.contract-content {
+    background: white;
+    padding: 20px;
+    font-family: '宋体', SimSun, serif;
+    line-height: 1.6;
+    font-size: 14px; /* 小四字体 */
+    color: #000;
+    max-width: 794px; /* A4宽度 */
+    margin: 0 auto;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.contract-content h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 18px; /* 小二字体 */
+    font-weight: bold;
+    padding-bottom: 10px;
+}
+
+.contract-content p {
+    margin-bottom: 12px;
+    text-indent: 2em;
+    font-size: 14px; /* 小四字体 */
+    line-height: 1.6;
+    color: #000;
+}
+
+.contract-content p strong {
+    font-weight: bold;
+}
+
+.contract-content p {
+    margin-bottom: 12px;
+    text-indent: 2em;
+}
+
+.contract-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+    font-size: 14px; /* 小四字体 */
+    border: 1px solid #000;
+}
+
+.contract-content table td {
+    border: 1px solid #000;
+    padding: 6px;
+    text-align: center;
+    font-size: 14px; /* 小四字体 */
+}
+
+.contract-content table tr:first-child td {
+    font-weight: bold;
+    border-bottom: 1px solid #000;
+}
+
+.contract-content table tr:last-child td {
+    font-weight: bold;
+    border-top: 1px solid #000;
+}
+
+.contract-content p.no-indent {
+    text-indent: 0;
+}
+
+.contract-content .signature {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding: 20px 0;
+}
+
+.contract-content .signature div {
+    text-align: center;
+    flex: 1;
+    padding: 0 20px;
+}
+
+.contract-content .signature p {
+    text-indent: 0;
+    margin-bottom: 8px;
+    font-size: 14px; /* 小四字体 */
+    line-height: 1.5;
+    word-wrap: break-word;
+}
+
+.contract-content .signature p:first-child {
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.export-buttons {
+    padding: 20px 0;
+    text-align: center;
+    background: white;
+    border-top: 1px solid #eee;
+}
+
+.section-footer .btn {
+    min-width: 120px;
+}
+
+.service-item {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    padding: 12px;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.service-item h4 {
+    color: #007bff;
+    margin-bottom: 8px;
+    padding-bottom: 4px;
+    font-size: 15px;
+}
+
+.remove-service {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 1;
+}
+
+.remove-service:hover {
+    background-color: #c82333;
+}
+
+/* 优化添加服务按钮样式 */
+.add-service-btn {
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    color: white;
+    border: none;
+    border-radius: 16px;
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 1px 3px rgba(0, 123, 255, 0.2);
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    margin-left: 10px;
+}
+
+.add-service-btn:hover {
+    background: linear-gradient(135deg, #0056b3, #003d7a);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 123, 255, 0.3);
+}
+
+.add-service-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 3px rgba(0, 123, 255, 0.2);
+}
+
+.add-service-btn::before {
+    content: '+';
+    font-size: 14px;
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+        max-width: 100%;
+    }
+    
+    .two-column-layout {
+        flex-direction: column;
+    }
+    
+    .form-section,
+    .preview-section {
+        max-width: 100%;
+        width: 100%;
+    }
+    
+    .preview-section {
+        position: static;
+        margin-top: 30px;
+    }
+    
+    .btn {
+        display: block;
+        width: 100%;
+        margin-bottom: 10px;
+        margin-right: 0;
+    }
+    
+    .contract-content {
+        padding: 20px;
+    }
+}

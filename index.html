@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>"食堂有饭"软件系统服务补充协议生成器</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+   
+        
+        <div class="two-column-layout">
+            <div class="form-section">
+                <h2>协议信息填写</h2>
+                <form id="contractForm">
+                    <div class="form-section-block">
+                        <h3>甲方信息</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>单位名称</label>
+                                <input type="text" id="partyA" name="partyA" placeholder="请输入甲方单位全称" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>单位地址</label>
+                                <input type="text" id="partyAAddress" name="partyAAddress" placeholder="请输入详细地址" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>联系人</label>
+                                <input type="text" id="partyAContact" name="partyAContact" placeholder="请输入联系人姓名" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>联系电话</label>
+                                <input type="tel" id="partyAPhone" name="partyAPhone" placeholder="请输入联系电话" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>食堂ID</label>
+                                <input type="text" id="canteenId" name="canteenId" placeholder="请输入食堂ID" required>
+                            </div>
+                            <div class="form-group">
+                                <!-- 空白占位，保持对齐 -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section-block">
+                        <h3>乙方信息</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>单位名称</label>
+                                <input type="text" id="partyB" name="partyB" value="福建尚汇信息科技有限公司" readonly>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>单位地址</label>
+                                <input type="text" id="partyBAddress" name="partyBAddress" value="福建省漳州高新区西桥街道桥南国道南路24号" readonly>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>联系人</label>
+                                <input type="text" id="partyBContact" name="partyBContact" placeholder="请输入乙方联系人姓名" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>联系电话</label>
+                                <input type="tel" id="partyBPhone" name="partyBPhone" value="4009-180-190" readonly>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section-block">
+                        <h3>服务内容
+                            <button type="button" class="add-service-btn" onclick="addServiceItem()">添加服务</button>
+                        </h3>
+                        <div id="serviceItemsContainer">
+                            <div class="service-item" data-index="0">
+                                <h4>服务项目 1</h4>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>订单号</label>
+                                        <input type="text" name="orderNumber[]" placeholder="请输入订单编号" required>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label>产品/服务名称</label>
+                                        <select name="productName[]" required>
+                                            <option value="">请选择</option>
+                                            <option value="食堂有饭系统使用服务">"食堂有饭"系统使用服务</option>
+                                            <option value="青蛙PRO">青蛙PRO</option>
+                                            <option value="飞鹅小票机">飞鹅小票机</option>
+                                            <option value="飞鹅小票机接入">飞鹅小票机接入</option>
+                                            <option value="技术服务">技术服务</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>数量/单位</label>
+                                        <input type="number" name="quantity[]" min="1" step="1" placeholder="请输入数量" required>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label>服务开始日期</label>
+                                        <input type="date" name="serviceStartDate[]" placeholder="请选择开始日期" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>服务结束日期</label>
+                                        <input type="date" name="serviceEndDate[]" placeholder="请选择结束日期" required>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label>价格（元）</label>
+                                        <input type="number" name="servicePrice[]" placeholder="如有优惠，输入优惠后金额" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section-block">
+                        <h3>付款信息</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>付款截止日期</label>
+                                <input type="date" id="paymentDeadline" name="paymentDeadline" placeholder="请选择付款截止日期" required>
+                            </div>
+                            <div class="form-group">
+                                <!-- 空白占位，保持对齐 -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-buttons">
+                        <button type="submit" class="btn btn-primary">生成协议</button>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="preview-section" id="previewSection">
+                <h2>协议预览</h2>
+                <div id="contractPreview" class="contract-content"></div>
+                
+                <div class="export-buttons section-footer">
+                    <button id="exportPDF" class="btn btn-danger">导出PDF</button>
+                    <!-- <button id="exportWord" class="btn btn-primary">导出Word</button>
+                    <button id="exportImage" class="btn btn-success">导出图片</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html-docx-js/0.9.0/html-docx.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
