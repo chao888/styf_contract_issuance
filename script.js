@@ -249,6 +249,15 @@ async function exportToPDF() {
         const scaledTotalHeight = totalHeight * scale;
         const totalPages = Math.ceil(scaledTotalHeight / CONTENT_HEIGHT);
         
+        // 获取表单数据以生成文件名
+        const form = document.getElementById('contractForm');
+        const formData = new FormData(form);
+        const canteenId = formData.get('canteenId') || '';
+        const partyA = formData.get('partyA') || '';
+        
+        // 生成文件名：canteenId+partyA+服务协议
+        const filename = `${canteenId}${partyA}服务协议.pdf`;
+        
         // 创建PDF
         const pdf = new jspdf.jsPDF({
             unit: 'mm',
@@ -299,7 +308,7 @@ async function exportToPDF() {
             pdf.addImage(imgData, 'JPEG', x, y, imgWidth, imgHeight);
         }
         
-        pdf.save('食堂有饭软件系统服务补充协议.pdf');
+        pdf.save(filename);
         
     } catch (error) {
         console.error('PDF生成失败:', error);
@@ -385,17 +394,18 @@ async function exportToWord() {
         // 创建Blob对象
         const blob = htmlDocx.asBlob(fullHtml);
         
-        // 下载Word文档
-        const now = new Date();
-        const timestamp = now.getFullYear() + 
-                        String(now.getMonth() + 1).padStart(2, '0') + 
-                        String(now.getDate()).padStart(2, '0') + 
-                        String(now.getHours()).padStart(2, '0') + 
-                        String(now.getMinutes()).padStart(2, '0');
+        // 获取表单数据以生成文件名
+        const form = document.getElementById('contractForm');
+        const formData = new FormData(form);
+        const canteenId = formData.get('canteenId') || '';
+        const partyA = formData.get('partyA') || '';
+        
+        // 生成文件名：canteenId+partyA+服务协议
+        const filename = `${canteenId}${partyA}服务协议.docx`;
         
         const link = document.createElement('a');
         link.href = URL.createObjectURL(blob);
-        link.download = `食堂有饭服务协议_${timestamp}.docx`;
+        link.download = filename;
         link.click();
         
         // 清理URL对象
@@ -760,11 +770,6 @@ document.getElementById('contractForm').addEventListener('submit', function(e) {
     
     // 显示合同预览
     document.getElementById('contractPreview').innerHTML = contractContent;
-    
-    // 注释掉：启用导出PDF按钮
-    // document.getElementById('exportPDF').disabled = false;
-    // document.getElementById('exportPDF').style.opacity = '1';
-    // document.getElementById('exportPDF').style.cursor = 'pointer';
     
     // 在移动设备上滚动到预览区域
     if (window.innerWidth < 768) {
