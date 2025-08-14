@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, Menu } = require('electron'); // 引入 Menu 模块
 const path = require('node:path');
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
@@ -9,8 +9,8 @@ if (require('electron-squirrel-startup')) {
 const createWindow = () => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 1200,
+    height: 900,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
     },
@@ -24,6 +24,43 @@ const createWindow = () => {
   if (process.env.NODE_ENV === 'development') {
     mainWindow.webContents.openDevTools();
   }
+
+  // 创建自定义菜单模板
+  const template = [
+    // {
+    //   label: '文件',
+    //   submenu: [
+    //     { label: '新建', accelerator: 'CmdOrCtrl+N', click: () => console.log('新建文件') },
+    //     { type: 'separator' }, // 分隔线
+    //     { label: '退出', accelerator: 'CmdOrCtrl+Q', click: () => app.quit() }
+    //   ]
+    // },
+    // {
+    //   label: '编辑',
+    //   submenu: [
+    //     { label: '剪切', role: 'cut' },
+    //     { label: '复制', role: 'copy' },
+    //     { label: '粘贴', role: 'paste' }
+    //   ]
+    // },
+    // {
+    //   label: '视图',
+    //   submenu: [
+    //     { label: '重新加载', role: 'reload' },
+    //     { label: '强制重新加载', role: 'forceReload' },
+    //     { label: '切换开发者工具', role: 'toggleDevTools' },
+    //     { type: 'separator' },
+    //     { label: '实际大小', role: 'resetZoom' },
+    //     { label: '放大', role: 'zoomIn' },
+    //     { label: '缩小', role: 'zoomOut' }
+    //   ]
+    // }
+  ];
+
+  // 构建菜单
+  const menu = Menu.buildFromTemplate(template);
+  // 设置应用程序菜单
+  Menu.setApplicationMenu(menu);
 };
 
 // This method will be called when Electron has finished

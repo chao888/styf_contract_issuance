@@ -1,8 +1,8 @@
 {
-  "name": "electron-app",
-  "productName": "electron-app",
+   "name": "食堂有饭合同生成",
+  "productName": "食堂有饭合同生成",
   "version": "1.0.0",
-  "description": "My Electron application description",
+  "description": "一键生成pdf合同文件",
   "main": "src/index.js",
   "scripts": {
     "start": "electron-forge start",
@@ -30,5 +30,14 @@
     "@electron-forge/plugin-fuses": "^7.8.3",
     "@electron/fuses": "^1.8.0",
     "electron": "^37.2.6"
+  },
+    "build": {
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "chao888",
+        "repo": "styf_contract_issuance"
+      }
+    ]
   }
 }
