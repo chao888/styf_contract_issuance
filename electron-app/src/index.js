@@ -1,4 +1,4 @@
-const { app, BrowserWindow, Menu } = require('electron'); // 引入 Menu 模块
+const { app, BrowserWindow, Menu, dialog, autoUpdater } = require('electron'); // 引入 Menu 模块
 const path = require('node:path');
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
@@ -68,6 +68,48 @@ const createWindow = () => {
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
   createWindow();
+
+  // Auto-update configuration
+  const server = 'https://github.com/chao888/styf_contract_issuance'; // Replace with your GitHub repository URL
+  const url = `${server}/update/${process.platform}/${app.getVersion()}`;
+  autoUpdater.setFeedURL({ url: url });
+
+  // Check for updates every 5 minutes (adjust as needed)
+  setInterval(() => {
+    autoUpdater.checkForUpdates();
+  }, 5 * 60 * 1000);
+
+  autoUpdater.on('update-available', () => {
+    dialog.showMessageBox({
+      type: 'info',
+      title: '发现新版本',
+      message: '发现新版本，正在下载中...',
+      buttons: ['确定']
+    });
+  });
+
+  autoUpdater.on('update-downloaded', (event, releaseNotes, releaseName) => {
+    const dialogOpts = {
+      type: 'info',
+      buttons: ['重启', '稍后'],
+      title: '应用更新',
+      message: process.platform === 'win32' ? releaseNotes : releaseName,
+      detail: '新版本已下载。立即重启以安装更新吗？'
+    };
+
+    dialog.showMessageBox(dialogOpts).then((returnValue) => {
+      if (returnValue.response === 0) autoUpdater.quitAndInstall();
+    });
+  });
+
+  autoUpdater.on('error', message => {
+    console.error('There was a problem updating the application');
+    console.error(message);
+    dialog.showErrorBox('更新错误', '检查更新时发生错误：' + message);
+  });
+
+  // Initial check for updates when the app starts
+  autoUpdater.checkForUpdates();
 
   // On OS X it's common to re-create a window in the app when the
   // dock icon is clicked and there are no other windows open.

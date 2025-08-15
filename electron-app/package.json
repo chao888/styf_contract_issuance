@@ -1,43 +1,44 @@
 {
-   "name": "食堂有饭合同生成",
-  "productName": "食堂有饭合同生成",
-  "version": "1.0.0",
-  "description": "一键生成pdf合同文件",
-  "main": "src/index.js",
-  "scripts": {
-    "start": "electron-forge start",
-    "package": "electron-forge package",
-    "make": "electron-forge make",
-    "publish": "electron-forge publish",
-    "lint": "echo \"No linting configured\""
-  },
-  "keywords": [],
-  "author": {
-    "name": "chao888",
-    "email": "71178972+chao888@users.noreply.github.com"
-  },
-  "license": "MIT",
-  "dependencies": {
-    "electron-squirrel-startup": "^1.0.1"
-  },
-  "devDependencies": {
-    "@electron-forge/cli": "^7.8.3",
-    "@electron-forge/maker-deb": "^7.8.3",
-    "@electron-forge/maker-rpm": "^7.8.3",
-    "@electron-forge/maker-squirrel": "^7.8.3",
-    "@electron-forge/maker-zip": "^7.8.3",
-    "@electron-forge/plugin-auto-unpack-natives": "^7.8.3",
-    "@electron-forge/plugin-fuses": "^7.8.3",
-    "@electron/fuses": "^1.8.0",
-    "electron": "^37.2.6"
-  },
-    "build": {
-    "publish": [
-      {
-        "provider": "github",
-        "owner": "chao888",
-        "repo": "styf_contract_issuance"
-      }
-    ]
-  }
+   "name": "styf_contract_issuance",
+   "productName": "styf_contract_issuance",
+   "version": "1.1.0",
+   "description": "一键生成pdf合同文件",
+   "main": "src/index.js",
+   "scripts": {
+      "start": "electron-forge start",
+      "package": "electron-forge package",
+      "make": "electron-forge make",
+      "publish": "electron-forge publish",
+      "lint": "echo \"No linting configured\""
+   },
+   "keywords": [],
+   "author": {
+      "name": "chao888",
+      "email": "71178972+chao888@users.noreply.github.com"
+   },
+   "license": "MIT",
+   "dependencies": {
+      "electron-squirrel-startup": "^1.0.1"
+   },
+   "devDependencies": {
+      "@electron-forge/cli": "^7.8.3",
+      "@electron-forge/maker-deb": "^7.8.3",
+      "@electron-forge/maker-rpm": "^7.8.3",
+      "@electron-forge/maker-squirrel": "^7.8.3",
+      "@electron-forge/maker-zip": "^7.8.3",
+      "@electron-forge/plugin-auto-unpack-natives": "^7.8.3",
+      "@electron-forge/plugin-fuses": "^7.8.3",
+      "@electron/fuses": "^1.8.0",
+      "electron": "^37.2.6",
+      "electron-icon-maker": "^0.0.5"
+   },
+   "build": {
+      "publish": [
+         {
+            "provider": "github",
+            "owner": "chao888",
+            "repo": "styf_contract_issuance"
+         }
+      ]
+   }
 }

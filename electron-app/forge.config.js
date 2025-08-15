@@ -9,7 +9,10 @@ module.exports = {
   makers: [
     {
       name: '@electron-forge/maker-squirrel',
-      config: {},
+      config: {
+        setupIcon: './src/assets/icon.ico', // 请确保此路径存在一个ico图标文件
+        loadingGif: './src/assets/loading.gif', // 请确保此路径存在一个gif加载动画文件
+      },
     },
     {
       name: '@electron-forge/maker-zip',
