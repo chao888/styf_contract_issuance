@@ -1,7 +1,7 @@
 {
    "name": "styf_contract_issuance",
    "productName": "styf_contract_issuance",
-   "version": "1.1.0",
+   "version": "1.1.1",
    "description": "一键生成pdf合同文件",
    "main": "src/index.js",
    "scripts": {
@@ -9,12 +9,14 @@
       "package": "electron-forge package",
       "make": "electron-forge make",
       "publish": "electron-forge publish",
-      "lint": "echo \"No linting configured\""
+      "lint": "echo \"No linting configured\"",
+      "build": "electron-builder",
+      "dist": "electron-builder --publish=always"
    },
    "keywords": [],
    "author": {
-      "name": "chao888",
-      "email": "71178972+chao888@users.noreply.github.com"
+      "name": "阿超",
+      "email": "chao1997@aliyun.com"
    },
    "license": "MIT",
    "dependencies": {
@@ -30,15 +32,17 @@
       "@electron-forge/plugin-fuses": "^7.8.3",
       "@electron/fuses": "^1.8.0",
       "electron": "^37.2.6",
-      "electron-icon-maker": "^0.0.5"
+      "electron-builder": "^26.0.12"
    },
    "build": {
-      "publish": [
-         {
-            "provider": "github",
-            "owner": "chao888",
-            "repo": "styf_contract_issuance"
-         }
-      ]
+      "appId": "com.chao.styf_contract_issuance",
+      "productName": "合同生成器",
+      "publish": {
+         "provider": "github",
+         "owner": "chao888",
+         "repo": "styf_contract_issuance",
+         "releaseType": "release"
+      }
+      
    }
 }

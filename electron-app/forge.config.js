@@ -10,7 +10,7 @@ module.exports = {
     {
       name: '@electron-forge/maker-squirrel',
       config: {
-        setupIcon: './src/assets/icon.ico', // 请确保此路径存在一个ico图标文件
+        setupIcon: './src/assets/icons/win/icon.ico', // 请确保此路径存在一个ico图标文件
         loadingGif: './src/assets/loading.gif', // 请确保此路径存在一个gif加载动画文件
       },
     },

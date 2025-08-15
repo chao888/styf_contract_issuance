@@ -69,44 +69,37 @@ const createWindow = () => {
 app.whenReady().then(() => {
   createWindow();
 
-  // Auto-update configuration
-  const server = 'https://github.com/chao888/styf_contract_issuance'; // Replace with your GitHub repository URL
-  const url = `${server}/update/${process.platform}/${app.getVersion()}`;
-  autoUpdater.setFeedURL({ url: url });
+const { autoUpdater } = require('electron-updater');
 
-  // Check for updates every 5 minutes (adjust as needed)
-  setInterval(() => {
-    autoUpdater.checkForUpdates();
-  }, 5 * 60 * 1000);
+autoUpdater.checkForUpdatesAndNotify();
 
-  autoUpdater.on('update-available', () => {
-    dialog.showMessageBox({
-      type: 'info',
-      title: '发现新版本',
-      message: '发现新版本，正在下载中...',
-      buttons: ['确定']
-    });
+autoUpdater.on('update-available', () => {
+  dialog.showMessageBox({
+    type: 'info',
+    title: '发现新版本',
+    message: '发现新版本，正在下载中...',
+    buttons: ['确定']
   });
+});
 
-  autoUpdater.on('update-downloaded', (event, releaseNotes, releaseName) => {
-    const dialogOpts = {
-      type: 'info',
-      buttons: ['重启', '稍后'],
-      title: '应用更新',
-      message: process.platform === 'win32' ? releaseNotes : releaseName,
-      detail: '新版本已下载。立即重启以安装更新吗？'
-    };
+autoUpdater.on('update-downloaded', (event, releaseNotes, releaseName) => {
+  const dialogOpts = {
+    type: 'info',
+    buttons: ['重启', '稍后'],
+    title: '应用更新',
+    message: process.platform === 'win32' ? releaseNotes : releaseName,
+    detail: '新版本已下载。立即重启以安装更新吗？'
+  };
 
-    dialog.showMessageBox(dialogOpts).then((returnValue) => {
-      if (returnValue.response === 0) autoUpdater.quitAndInstall();
-    });
+  dialog.showMessageBox(dialogOpts).then((returnValue) => {
+    if (returnValue.response === 0) autoUpdater.quitAndInstall();
   });
+});
 
-  autoUpdater.on('error', message => {
-    console.error('There was a problem updating the application');
-    console.error(message);
-    dialog.showErrorBox('更新错误', '检查更新时发生错误：' + message);
-  });
+autoUpdater.on('error', (err) => {
+  console.error('更新错误:', err);
+  dialog.showErrorBox('更新错误', err.message || String(err));
+});
 
   // Initial check for updates when the app starts
   autoUpdater.checkForUpdates();
